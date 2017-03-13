@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
   todos;
+  text;
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +19,19 @@ export class TodoComponent implements OnInit {
         text:"To do two"
       }
     ];
+  }
+  addTodo(){
+    this.todos.push({
+      text: this.text
+    });
+    this.text = '';
+  }
+  deleteTodo(deleteText){
+    for(var i = 0; i < this.todos.length; i++){
+      if(this.todos[i].text == deleteText){
+        this.todos.splice(i,1);
+      }
+    }
   }
 
 }
